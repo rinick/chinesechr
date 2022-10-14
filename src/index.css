@@ -18,6 +18,7 @@ body {
 
 div {
     box-sizing: border-box;
+    position: relative;
 }
 
 textarea {
@@ -30,10 +31,10 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    break-inside: avoid;
 }
 
 div.page-break {
-    break-inside: avoid;
     break-before: page;
     break-after: page;
     float: none;

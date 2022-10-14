@@ -6,7 +6,7 @@ import {Char} from './char';
 interface Props {}
 
 const App = () => {
-  const [history, setHistory] = useState(localStorage.getItem('chineseChrHistory'));
+  const [history, setHistory] = useState(localStorage.getItem('chineseChrHistory') ?? '');
   const [text, setText] = useState('');
 
   const changeHistory = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
