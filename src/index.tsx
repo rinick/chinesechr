@@ -18,6 +18,7 @@ const App = () => {
     setText(e.target.value);
   };
   const pages = useMemo(() => {
+    let key = 0;
     const chars = text.split('');
     const pages: React.ReactElement[] = [];
     let page: React.ReactElement[] = [];
@@ -27,7 +28,7 @@ const App = () => {
         pages.push(<div className="page-break" />);
       }
       pages.push(
-        <div key={page[0].key} className="page">
+        <div key={++key} className="page">
           {page}
         </div>
       );
@@ -35,10 +36,14 @@ const App = () => {
     }
 
     for (const char of chars) {
+      if (char.charCodeAt(0) < 255) {
+        // skip asc code during typing
+        continue;
+      }
       if (page.length >= 63) {
         addPage();
       }
-      page.push(<Char key={char} char={char} used={history.includes(char)} />);
+      page.push(<Char key={++key} char={char} used={history.includes(char)} />);
     }
     if (page.length) {
       addPage();
@@ -50,7 +55,7 @@ const App = () => {
     <>
       <div className="header">
         <textarea value={history} onChange={changeHistory} />
-        <textarea onChange={changeText} />
+        <textarea value={text} onChange={changeText} />
       </div>
       {pages}
     </>
