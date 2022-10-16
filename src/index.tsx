@@ -7,13 +7,14 @@ interface Props {}
 
 const App = () => {
   const [history, setHistory] = useState(localStorage.getItem('chineseChrHistory') ?? '');
-  const [text, setText] = useState('');
+  const [text, setText] = useState(localStorage.getItem('chineseChrPending') ?? '');
 
   const changeHistory = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     localStorage.setItem('chineseChrHistory', e.target.value);
     setHistory(e.target.value);
   };
   const changeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    localStorage.setItem('chineseChrPending', e.target.value);
     setText(e.target.value);
   };
   const pages = useMemo(() => {
