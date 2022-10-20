@@ -35,6 +35,7 @@ const App = () => {
       page = [];
     }
 
+    const duplicate = new Set<string>();
     for (const char of chars) {
       if (char.charCodeAt(0) < 255) {
         // skip asc code during typing
@@ -43,7 +44,8 @@ const App = () => {
       if (page.length >= 63) {
         addPage();
       }
-      page.push(<Char key={++key} char={char} used={history.includes(char)} />);
+      page.push(<Char key={++key} char={char} used={history.includes(char) || duplicate.has(char)} />);
+      duplicate.add(char);
     }
     if (page.length) {
       addPage();
