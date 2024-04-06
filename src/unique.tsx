@@ -11,7 +11,8 @@ const App = () => {
   };
   const chrSet = new Set<string>();
   for (let c of input) {
-    if (c.charCodeAt(0) > 256) {
+    const code = c.codePointAt(0);
+    if (code > 256 && !(code >= 0x3000 && code <= 0x303f) && !(code >= 0xff00 && code <= 0xffff)) {
       chrSet.add(c);
     }
   }
