@@ -56,8 +56,8 @@ const App = () => {
   return (
     <>
       <div className="header">
-        <textarea value={history} onChange={changeHistory} />
-        <textarea value={text} onChange={changeText} />
+        <textarea value={history} onChange={changeHistory} placeholder="历史字符，会在结果钟去除" />
+        <textarea value={text} onChange={changeText} placeholder="输入字符，生成字卡" />
       </div>
       {pages}
     </>

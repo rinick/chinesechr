@@ -8,6 +8,10 @@ export default defineConfig({
     assetsDir: './',
     outDir: 'docs',
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        unique: 'unique.html',
+      },
       output: {
         entryFileNames: `assets/[name].js`,
         chunkFileNames: `assets/[name].js`,
